@@ -1,0 +1,965 @@
+/* =========================================
+   1. THEME COLORS
+========================================= */
+
+:root {
+    --bg: #0b0b12;
+    --panel: #12121c;
+    --text: #f5f3ff;
+    --muted: #aaa6bd;
+    --line: #ffffff16;
+    --accent: #a78bfa;
+    --accent2: #6d5dfc;
+    --glow: #8b5cf655;
+    --card: #ffffff08;
+}
+
+body.light {
+    --bg: #f7f6fc;
+    --panel: #ffffff;
+    --text: #171326;
+    --muted: #655f78;
+    --line: #17132618;
+    --accent: #6d4aff;
+    --accent2: #8b5cf6;
+    --glow: #8b5cf622;
+    --card: #ffffffc9;
+}
+
+
+/* =========================================
+   2. GENERAL STYLING
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+    transition: background .35s ease, color .35s ease;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+        radial-gradient(ellipse at 15% 5%, var(--glow), transparent 38%),
+        radial-gradient(ellipse at 90% 45%, #4f46e51a, transparent 35%);
+
+    z-index: -1;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+/* Wider website container */
+.wrap {
+    width: min(1320px, 94%);
+    margin: auto;
+}
+
+.accent-dot {
+    color: var(--accent);
+}
+
+
+/* =========================================
+   3. NAVIGATION
+========================================= */
+
+.nav {
+    height: 78px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--line);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-weight: 800;
+    letter-spacing: -.04em;
+}
+
+.logo {
+    width: 46px;
+    height: 46px;
+
+    border-radius: 14px;
+
+    display: grid;
+    place-items: center;
+
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: white;
+
+    font-size: 18px;
+
+    box-shadow: 0 8px 30px var(--glow);
+
+    position: relative;
+    isolation: isolate;
+}
+
+.logo::after {
+    content: "";
+    position: absolute;
+    inset: 3px;
+
+    border: 1px solid #ffffff66;
+    border-radius: 11px;
+
+    z-index: -1;
+}
+
+.brand span {
+    font-size: 21px;
+}
+
+.navlinks {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.navlinks a {
+    transition: color .25s ease;
+}
+
+.navlinks a:hover {
+    color: var(--accent);
+}
+
+.theme {
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--text);
+
+    border-radius: 50%;
+
+    cursor: pointer;
+    font-size: 18px;
+
+    transition: transform .25s ease;
+}
+
+.theme:hover {
+    transform: rotate(18deg) scale(1.08);
+}
+
+
+/* =========================================
+   4. HERO SECTION
+========================================= */
+
+.hero {
+    min-height: auto;
+
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+
+    align-items: center;
+    gap: 65px;
+
+    padding: 85px 0 100px;
+}
+
+.eyebrow {
+    color: var(--accent);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: .18em;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-size: clamp(48px, 5.5vw, 78px);
+    line-height: 1.08;
+
+    letter-spacing: -.065em;
+
+    margin: 20px 0;
+}
+
+.hero h1 em {
+    font-style: normal;
+
+    background: linear-gradient(
+        90deg,
+        var(--accent),
+        #c4b5fd,
+        #60a5fa
+    );
+
+    background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    color: var(--muted);
+
+    font-size: 17px;
+    line-height: 1.8;
+
+    max-width: 650px;
+
+    margin: 0;
+}
+
+.actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 14px 22px;
+
+    border-radius: 12px;
+
+    font-weight: 700;
+    font-size: 14px;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border .25s ease;
+}
+
+.btn.primary {
+    background: linear-gradient(135deg, var(--accent2), #8b5cf6);
+    color: #fff;
+
+    box-shadow: 0 12px 35px var(--glow);
+}
+
+.btn.secondary {
+    border: 1px solid var(--line);
+    background: var(--card);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px var(--glow);
+}
+
+
+/* =========================================
+   5. PROFILE PHOTO
+========================================= */
+
+.visual {
+    position: relative;
+
+    display: grid;
+    place-items: center;
+
+    min-height: 420px;
+}
+
+.portrait-wrap {
+    width: min(390px, 100%);
+    aspect-ratio: .82;
+
+    position: relative;
+
+    display: grid;
+    place-items: center;
+
+    perspective: 1000px;
+}
+
+.portrait-glow {
+    position: absolute;
+    inset: 8% -4%;
+
+    border-radius: 38% 62% 55% 45% / 40% 38% 62% 60%;
+
+    background: linear-gradient(
+        135deg,
+        var(--accent),
+        #4f46e5,
+        #c4b5fd
+    );
+
+    filter: blur(28px);
+    opacity: .48;
+
+    animation: glowPulse 5s ease-in-out infinite;
+}
+
+.portrait-card {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    border: 1px solid #ffffff55;
+    border-radius: 28px;
+
+    background: var(--panel);
+
+    box-shadow: 0 25px 80px #6d28d944;
+
+    transform: rotateY(-5deg) rotateX(2deg);
+
+    transition: transform .45s ease, box-shadow .45s ease;
+}
+
+.portrait-card:hover {
+    transform: rotateY(0) rotateX(0) translateY(-5px);
+
+    box-shadow: 0 35px 95px #6d28d955;
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center 24%;
+
+    transition: transform .8s ease, filter .5s ease;
+
+    filter: saturate(.93) contrast(1.02);
+}
+
+.portrait-card:hover .profile-photo {
+    transform: scale(1.055);
+    filter: saturate(1.08) contrast(1.04);
+}
+
+.portrait-card::after {
+    content: "";
+
+    position: absolute;
+    inset: 35% 0 0;
+
+    background: linear-gradient(transparent, rgba(8, 7, 20, .88));
+
+    pointer-events: none;
+}
+
+.portrait-caption {
+    position: absolute;
+    z-index: 1;
+
+    bottom: 22px;
+    left: 22px;
+    right: 22px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    color: #fff;
+    font-size: 13px;
+}
+
+.portrait-initials {
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: -.07em;
+}
+
+.float-tag {
+    position: absolute;
+
+    background: var(--panel);
+    border: 1px solid var(--line);
+
+    padding: 12px 16px;
+    border-radius: 14px;
+
+    box-shadow: 0 12px 40px #0002;
+
+    font-size: 13px;
+
+    animation: float 5s ease-in-out infinite;
+}
+
+.tag1 {
+    top: 35px;
+    left: -10px;
+}
+
+.tag2 {
+    right: -10px;
+    bottom: 45px;
+
+    animation-delay: -2s;
+}
+
+.dot {
+    display: inline-block;
+
+    width: 8px;
+    height: 8px;
+
+    background: #34d399;
+    border-radius: 50%;
+
+    margin-right: 8px;
+}
+
+
+/* =========================================
+   6. ALL SECTIONS
+========================================= */
+
+section {
+    padding: 75px 0;
+}
+
+.section-head {
+    margin-bottom: 35px;
+}
+
+.section-head h2 {
+    font-size: clamp(32px, 3.5vw, 46px);
+    letter-spacing: -.05em;
+
+    margin: 12px 0;
+}
+
+.section-head p {
+    color: var(--muted);
+
+    font-size: 16px;
+    line-height: 1.8;
+
+    max-width: 1000px;
+
+    margin: 0;
+}
+
+
+/* =========================================
+   7. CARDS AND GRID
+========================================= */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 24px;
+}
+
+.card {
+    border: 1px solid var(--line);
+
+    background: var(--card);
+
+    border-radius: 22px;
+
+    padding: 30px;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        background .3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+
+    border-color: #a78bfa88;
+
+    background: var(--panel);
+}
+
+.card h3 {
+    margin: 12px 0;
+
+    font-size: 21px;
+}
+
+.card p,
+.card li {
+    color: var(--muted);
+
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+.card p:last-child {
+    margin-bottom: 0;
+}
+
+.icon {
+    font-size: 28px;
+}
+
+
+/* =========================================
+   8. EXPERIENCE TIMELINE
+========================================= */
+
+.timeline {
+    border-left: 1px solid var(--line);
+
+    margin-left: 8px;
+    padding-left: 30px;
+
+    display: grid;
+    gap: 22px;
+}
+
+.timeline .card {
+    position: relative;
+}
+
+.timeline .card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    left: -37px;
+    top: 32px;
+
+    box-shadow: 0 0 0 6px var(--glow);
+}
+
+
+/* =========================================
+   9. SKILLS
+========================================= */
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+.skill {
+    border: 1px solid var(--line);
+    background: var(--card);
+
+    padding: 12px 17px;
+
+    border-radius: 12px;
+
+    font-size: 14px;
+    color: var(--muted);
+
+    transition: color .25s ease, border-color .25s ease, transform .25s ease;
+}
+
+.skill:hover {
+    color: var(--text);
+
+    border-color: var(--accent);
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
+   10. PROJECT CHIPS
+========================================= */
+
+.chips {
+    display: flex;
+    gap: 9px;
+    flex-wrap: wrap;
+
+    margin-top: 18px;
+}
+
+.chip {
+    font-size: 12px;
+
+    color: var(--accent);
+
+    border: 1px solid var(--line);
+
+    padding: 6px 11px;
+
+    border-radius: 99px;
+
+    background: var(--glow);
+}
+
+
+/* =========================================
+   11. CONTACT SECTION
+========================================= */
+
+.contact {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 35px;
+
+    border: 1px solid var(--line);
+
+    background: linear-gradient(120deg, var(--card), var(--glow));
+
+    padding: 40px;
+
+    border-radius: 26px;
+}
+
+.contact h2 {
+    font-size: clamp(30px, 3vw, 40px);
+
+    letter-spacing: -.05em;
+
+    margin: 10px 0;
+}
+
+.contact p {
+    color: var(--muted);
+
+    font-size: 16px;
+    line-height: 1.8;
+
+    margin: 0;
+}
+
+
+/* =========================================
+   12. FOOTER
+========================================= */
+
+footer {
+    padding: 30px 0;
+
+    color: var(--muted);
+    font-size: 13px;
+
+    border-top: 1px solid var(--line);
+
+    margin-top: 50px;
+
+    display: flex;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+/* =========================================
+   13. SCROLL REVEAL ANIMATION
+========================================= */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(22px);
+
+    transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   14. KEYFRAME ANIMATIONS
+========================================= */
+
+@keyframes float {
+    0%, 100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0 -12px;
+    }
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        opacity: .38;
+        transform: scale(.96);
+    }
+
+    50% {
+        opacity: .65;
+        transform: scale(1.04);
+    }
+}
+
+
+/* =========================================
+   15. TABLET RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 1000px) {
+    .wrap {
+        width: 92%;
+    }
+
+    .hero {
+        gap: 35px;
+    }
+
+    .hero h1 {
+        font-size: clamp(42px, 5vw, 60px);
+    }
+
+    .portrait-wrap {
+        width: min(340px, 100%);
+    }
+
+    .navlinks {
+        gap: 18px;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+}
+
+
+/* =========================================
+   16. MOBILE RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 760px) {
+
+    .wrap {
+        width: 90%;
+    }
+
+    .nav {
+        height: 70px;
+    }
+
+    .navlinks {
+        gap: 10px;
+    }
+
+    .navlinks a {
+        display: none;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+
+        padding: 45px 0 60px;
+
+        gap: 30px;
+    }
+
+    .hero h1 {
+        font-size: clamp(40px, 9vw, 56px);
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .visual {
+        min-height: 330px;
+    }
+
+    .portrait-wrap {
+        width: min(320px, 78vw);
+        aspect-ratio: .88;
+    }
+
+    .portrait-card {
+        transform: none;
+    }
+
+    .tag1 {
+        left: -5px;
+        top: 20px;
+    }
+
+    .tag2 {
+        right: -5px;
+        bottom: 25px;
+    }
+
+    section {
+        padding: 50px 0;
+    }
+
+    .section-head {
+        margin-bottom: 25px;
+    }
+
+    .section-head h2 {
+        font-size: 32px;
+    }
+
+    .section-head p {
+        font-size: 14px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .card {
+        padding: 24px;
+    }
+
+    .card h3 {
+        font-size: 19px;
+    }
+
+    .card p {
+        font-size: 14px;
+    }
+
+    .timeline {
+        padding-left: 22px;
+        gap: 16px;
+    }
+
+    .timeline .card::before {
+        left: -29px;
+    }
+
+    .skills {
+        gap: 9px;
+    }
+
+    .skill {
+        padding: 10px 13px;
+        font-size: 12px;
+    }
+
+    .contact {
+        align-items: flex-start;
+        flex-direction: column;
+
+        padding: 28px;
+
+        gap: 18px;
+    }
+
+    .contact h2 {
+        font-size: 29px;
+    }
+
+    footer {
+        flex-direction: column;
+
+        gap: 12px;
+
+        margin-top: 35px;
+        padding: 24px 0;
+    }
+}
+
+
+/* =========================================
+   17. SMALL MOBILE SCREENS
+========================================= */
+
+@media (max-width: 400px) {
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .actions {
+        gap: 9px;
+    }
+
+    .btn {
+        padding: 12px 15px;
+        font-size: 12px;
+    }
+
+    .portrait-wrap {
+        width: 75vw;
+    }
+
+    .float-tag {
+        font-size: 10px;
+        padding: 9px 11px;
+    }
+
+    .section-head h2 {
+        font-size: 28px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .contact {
+        padding: 22px;
+    }
+}
+
+
+/* =========================================
+   18. ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+
+        scroll-behavior: auto !important;
+
+        transition: none !important;
+    }
+}
